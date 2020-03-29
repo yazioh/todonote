@@ -15,7 +15,17 @@ https://scrapbox.io/todonote/
 使い方、思想については ScrapBox https://scrapbox.io/todonote/ を参照のこと
 
 
+### ライセンス等
 
+* MITライセンスに準じる
+* フォーク・改変は自由
+* 作成者や著作権者は、製品に対しての義務や責任を何ら負わない
+* yazioh 著作でない成果物の複製・利用・公開については該当著作物のライセンスに従うこと
+
+
+主な利用ライブラリ
+* jQuery 
+* FontAuesome
 
 
 ### 【関連】 VueJS で作りかけ v2.x.x 系（ただしこちらは動作しない）
