@@ -1,0 +1,2254 @@
+/* reset */
+html, body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+* {
+	box-sizing: border-box;
+}
+table, tr, td, th {
+	font: inherit;
+}
+sup, sub {
+	line-height: 0;
+	font-size: 50%;
+}
+
+li, ul, ol, dt, dd, dl, p, div, section, td, tr, caption, table, input, textarea, button {
+	margin: 0;
+	padding: 0;
+}
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+	padding: 0;
+	font-size: inherit;
+}
+i, em, u, b {
+	font-style: normal;
+	font-weight: bold;
+	text-decoration: none;
+}
+li {
+	list-style-position: inside;
+	list-style: none;
+}
+
+/*　フォント設定　*/
+body {
+	/*	font-family:  "ふい字Ｐ",HuiFontP, "メイリオ" "ふい字Ｐ" "へた字"; */
+	/*font-family: Arial, Roboto, "Droid Sans", "游ゴシック", YuGothic, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;*/
+	font-family: "Lucida Grande", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "游ゴシック", YuGothic, "メイリオ", Meiryo, "Droid Sans", sans-serif;
+	font-size: 14px;
+	color: #111;
+}
+/* 広い画面ではちょい大きめ　*/
+@media screen and (min-width: 920px) {
+	.portrait {
+		font-size: 16px;
+	}
+}
+@media screen and (min-width: 1280px) {
+	.landscape {
+		font-size: 16px;
+	}
+}
+
+/* スマホで小さめ表示　*/
+@media screen and (max-width: 480px) {
+	.portrait {
+		/*font-size: 10px;*/
+	}
+	.portrait li.fusen > .ttl {
+		font-size: 100% !important;
+	}
+}
+@media screen and (max-width: 640px) {
+	.landscape {
+		/*font-size: 10px;*/
+	}
+	.landscape li.fusen > .ttl {
+		font-size: 100% !important;
+	}
+}
+
+a {
+	cursor: pointer;
+}
+button {
+	color: inherit;
+}
+
+/* --------------------------------------------------------------------- */
+/* Utilty */
+.r {
+	text-align: right;
+}
+.c {
+	text-align: center;
+}
+.hide {
+	display: none;
+}
+.show {
+	display: block;
+}
+.alert {
+	color: #900;
+	font-weight: bold;
+	background-color: #fCC;
+}
+
+.mb5 {
+	margin-bottom: 5px !important;
+}
+.mb10 {
+	margin-bottom: 10px !important;
+}
+.mb20 {
+	margin-bottom: 20px !important;
+}
+.mb30 {
+	margin-bottom: 30px !important;
+}
+.mb40 {
+	margin-bottom: 40px !important;
+}
+.mt5 {
+	margin-top: 5px !important;
+}
+.mt10 {
+	margin-top: 10px !important;
+}
+.mt20 {
+	margin-top: 20px !important;
+}
+.mt30 {
+	margin-top: 30px !important;
+}
+.mt40 {
+	margin-top: 40px !important;
+}
+
+.clear:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+/* --------------------------------------------------------------------- */
+/* inline input+unit combination box */
+.combi {
+	display: inline-table;
+	background-color: rgba(255,255,255,0.1);
+	box-shadow: inset 1px 1px 0 rgba(100,100,100,0.1);
+	border-radius: 4px;
+	margin: 1px;
+}
+.combi > * {
+	display: table-cell;
+}
+.combi > *:first-child {
+	border-radius: 4px 0 0 4px;
+}
+.combi > *:last-child {
+	border-radius: 0 4px 4px 0;
+}
+.combi > input, .combi > label, .combi > select {
+	border: none;
+	background-color: transparent;
+	width: 100%;
+	padding-left: 4px;
+	padding-right: 4px;
+}
+.combi > em {
+	padding: 0 1ex;
+	text-align: center;
+	font-style: normal;
+	word-break: keep-all;
+	background-color: rgba(255,255,255,0.2);
+}
+.col .combi {
+	width: 100%;
+}
+/* --------------------------------------------------------------------- */
+/* 12grid + divid */
+/*@formatter:off*/
+.grid {
+	clear: left;
+	overflow: hidden;
+}
+
+.col1 {
+	width: 7.25%;
+	margin-left: 1%;
+	float: left;
+	position: relative;
+}
+.grid.div8 > .col {
+	width: 11.375%;
+	margin-left: 1%;
+	float: left;
+	position: relative;
+}
+.grid.div7 > .col {
+	width: 13.14%;
+	margin-left: 1%;
+	float: left;
+	position: relative;
+}
+.col2, .grid.div6 > .col {
+	width: 15.50%;
+	margin-left: 1%;
+	float: left;
+	position: relative;
+}
+.grid.div5 > .col {
+	width: 18.80%;
+	margin-left: 1%;
+	float: left;
+	position: relative;
+}
+.col3, .grid.div4 > .col {
+	width: 23.75%;
+	margin-left: 1%;
+	float: left;
+	position: relative;
+}
+.col4, .grid.div3 > .col {
+	width: 32.00%;
+	margin-left: 1%;
+	float: left;
+	position: relative;
+}
+.col5 {
+	width: 40.25%;
+	margin-left: 1%;
+	float: left;
+	position: relative;
+}
+.col6, .grid.div2 > .col {
+	width: 48.50%;
+	margin-left: 1%;
+	float: left;
+	position: relative;
+}
+.col7 {
+	width: 56.75%;
+	margin-left: 1%;
+	float: left;
+	position: relative;
+}
+.col8 {
+	width: 65.00%;
+	margin-left: 1%;
+	float: left;
+	position: relative;
+}
+.col9 {
+	width: 73.25%;
+	margin-left: 1%;
+	float: left;
+	position: relative;
+}
+.col10 {
+	width: 81.50%;
+	margin-left: 1%;
+	float: left;
+	position: relative;
+}
+.col11 {
+	width: 89.75%;
+	margin-left: 1%;
+	float: left;
+	position: relative;
+}
+.col12, .grid.div1 > .col {
+	width: 98.00%;
+	margin-left: 1%;
+	float: left;
+	position: relative;
+}
+
+.grid .sft1 {
+	margin-left: 9.25%;
+}
+.grid .sft2 {
+	margin-left: 17.5%;
+}
+.grid .sft3 {
+	margin-left: 25.75%;
+}
+.grid .sft4 {
+	margin-left: 34.0%;
+}
+.grid .sft5 {
+	margin-left: 42.25%;
+}
+.grid .sft6 {
+	margin-left: 51.5%;
+}
+.grid .sft7 {
+	margin-left: 58.75%;
+}
+.grid .sft8 {
+	margin-left: 67.0%;
+}
+.grid .sft9 {
+	margin-left: 75.25%;
+}
+.grid .sft10 {
+	margin-left: 83.5%;
+}
+.grid .sft11 {
+	margin-left: 91.75%;
+}
+
+/*@formatter:on*/
+.grid input {
+	position: relative;
+	width: 100%;
+}
+.grid textarea {
+	width: 100%;
+}
+
+.grid .col > span {
+	display: block;
+}
+/*@formatter:on*/
+
+/* --------------------------------------------------------------------- */
+/* Structure Blocks  */
+section.page {
+	background-color: #999;
+	position: absolute;
+	z-index: 100;
+	overflow: auto;
+}
+.portrait section.page {
+	bottom: 100px; /* footer height */
+	top: 0;
+	height: auto;
+	left: 0;
+	width: 100%;
+}
+.landscape section.page {
+	top: 0;
+	height: 100%;
+	left: 0;
+	right: 80px;
+}
+
+/* 4象限基本色  ---------------------------------------------------------- */
+/* 緊急&重要　*/
+#SCR .a1 {
+	background-color: #FCC;
+}
+#SCR .a1.area:hover, #SCR .a1 .a1 {
+	background-color: #F66;
+	color: #FFF;
+	font-weight: bold;
+}
+#SCR .fa.a1 {
+	background: none;
+	color: #FCC;
+	text-shadow: 0px 0px 1px #000;
+}
+
+/* 緊急　*/
+#SCR .a2 {
+	background-color: #FFC;
+}
+#SCR .a2.area:hover, #SCR .a2 .a2 {
+	background-color: #FF3;
+	color: #000;
+	font-weight: bold;
+}
+#SCR .fa.a2 {
+	background: none;
+	color: #FFC;
+	text-shadow: 0px 0px 1px #000
+}
+
+/* 重要 */
+#SCR .a3 {
+	background-color: #9DF;
+}
+#SCR .a3.area:hover, #SCR .a3 .a3 {
+	background-color: #66F;
+	color: #FFF;
+	font-weight: bold;
+}
+#SCR .fa.a3 {
+	background: none;
+	color: #9DF;
+	text-shadow: 0px 0px 1px #000;
+}
+
+/* 後回し */
+#SCR .a4 {
+	background-color: #9F9;
+}
+#SCR .a4.area:hover, #SCR .a4 .a4 {
+	background-color: #9C9;
+	color: #000;
+	font-weight: bold;
+}
+#SCR .fa.a4 {
+	background: none;
+	color: #9F9;
+	text-shadow: 0px 0px 1px #000;
+}
+
+/* --------------------------------------------------------------------- */
+#vwSideBar {
+	position: absolute;
+	background-color: #ccc;
+}
+#vwSideBar > .inner {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+.landscape #vwSideBar {
+	top: 0;
+	bottom: 0;
+	right: 0px;
+	width: 80px;
+	box-shadow: inset -1px 0 1px rgba(0,0,0,0.5);
+}
+.portrait #vwSideBar {
+	bottom: 0;
+	left: 0;
+	right: 0px;
+	height: 100px;
+	box-shadow: inset 0 1 1px rgba(0,0,0,0.5);
+}
+
+/* タブレット 縦持ち */
+@media screen and (min-width: 480px) {
+
+	.portrait #vwSideBar #mnView{
+		width: 50%;
+		height:60px;
+		float: left;
+		overflow: hidden;
+	}
+		.portrait #vwSideBar #mnView li {
+			height:50px;
+			line-height:50px;
+			width:50px;
+		}
+
+	.portrait #vwSideBar #mnQuery{
+		width:50%;
+		height:40px;
+		float: right;
+		overflow: hidden;
+	}
+	
+	.portrait #vwSideBar #mnTags{
+		width:50%;
+		height:40px;
+		float: right;
+		overflow: hidden;
+	}
+	.portrait #vwSideBar #mnEdit{
+		position: absolute;
+		top:0;
+		width:100%;
+	}
+	.portrait #vwSideBar #mnEdit li {
+		position: absolute;
+		left:50%;
+		width:8em;
+		margin-left: -4em;
+	}
+	
+}
+/* スマホで小さめ表示　*/
+@media screen and (max-width: 480px) {
+
+	.portrait #vwSideBar {
+		height: 52px;
+	}
+	.portrait section.page {
+		bottom: 52px;
+	}
+	.portrait #vwSideBar #mnQuery {
+		display: none;
+	}
+	
+	.portrait #vwSideBar #mnTags {
+		display: none;
+	}
+	
+	.portrait #vwSideBar #mnView li {
+		height:40px;
+		line-height:40px;
+		width:40px;
+	}
+	.portrait #vwSideBar #mnEdit{
+		position: absolute;
+		top:0;
+		width:100%;
+	}
+	.portrait #vwSideBar #mnEdit li {
+		position: absolute;
+		left:50%;
+		width:8em;
+		margin-left: -4em;
+	}
+
+
+}
+@media screen and (max-width: 640px) {
+	.landscape #vwSideBar {
+		width: 52px;
+	}
+	.landscape section.page {
+		right: 52px;
+	}
+
+	.landscape #vwSideBar #mnQuery {
+		display: none;
+	}
+	
+	.landscape #vwSideBar #mnTags {
+		display: none;
+	}
+
+}
+
+#vwSideBar .buttons {
+	/* 	border-top: 1px solid #999;	border-bottom: 1px solid #eee;*/
+}
+#vwSideBar .buttons li {
+	cursor: pointer;
+}
+.landscape #vwSideBar .buttons {
+	right: 0;
+	width: 100%;
+	margin-top: 5px;
+	margin: 5px 0;
+	padding: 5px 0 0;
+}
+.portrait #vwSideBar .buttons {
+	margin: 5px 0;
+}
+.portrait #vwSideBar #mnView:after {
+	content: "";
+	clear: left;
+	display: block;
+}
+
+#vwSideBar ul.buttons li {
+	margin: 0 4px 5px;
+	padding: 2px 0 0 0;
+	text-align: center;
+	background-color: #CCC;
+	border: solid 2px #DDD;
+	box-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+	border-radius: 4px;
+	color: #888;
+	cursor: pointer;
+	overflow: hidden;
+	height: 28px;
+	line-height: 24px;
+}
+#vwSideBar #mnView li {
+	line-height: inherit;
+	height: auto;
+}
+.landscape #vwSideBar ul.buttons li {
+
+}
+.portrait  #vwSideBar ul.buttons li {
+/*	width: 10%;*/
+	min-width: 40px;
+	float: left;
+}
+
+
+#vwSideBar ul.buttons li.selected {
+	background-color: #EEE;
+	border: solid 2px #fff;
+	box-shadow: -1px -1px 1px rgba(0,0,0,0.5);
+	color: #111;
+	text-shadow: 1px 1px 0px #FFF;
+}
+
+#vwSideBar .buttons li {
+	overflow: hidden;
+	border-bottom: 1px solid #999;
+	border-top: 1px solid #eee;
+	position: relative;
+	min-width:40px;
+}
+/*
+.portrait #vwSideBar #mnTags {
+	position: absolute;
+	bottom: 0px;
+	right: 0;
+	width: 100%;
+}*/
+.landscape #vwSideBar #mnTags {
+	position: absolute;
+	bottom: 0px;
+	right: 0;
+	width: 100%;
+}
+
+#mnTags .tags li {
+	padding: 5px 0;
+	overflow: hidden;
+	border-bottom: 1px solid #999;
+	border-top: 1px solid #eee;
+	position: relative;
+	display: block;
+}
+
+#mnTags .tags .tag {
+	position: relative;
+	display: block;
+	height: 20px;
+	margin: 0px -4px 2px 8px;
+	background-color: #EEE;
+	border-radius: 0 3px 3px 0;
+	padding: 0 0 0 3px;
+	text-align: left;
+	line-height: 20px;
+	font-size: 10px;
+	font-weight: normal;
+	color: #666;
+	z-index: 5;
+}
+#mnTags .tags b.tag:before {
+	content: "";
+	position: absolute;
+	left: -8px;
+	top: 50%;
+	margin-top: -12px;
+	display: block;
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 12px 8px 12px 0;
+	border-color: transparent;
+	border-right-color: #EEE;
+	z-index: 1;
+}
+#mnTags .tags .tag:after {
+	content: "";
+	position: absolute;
+	width: 4px;
+	height: 4px;
+	left: -2px;
+	top: 50%;
+	margin-top: -3px;
+	background-color: rgba(0,0,0,0.2);
+	border-radius: 4px;
+	/*box-shadow:-1px -1px 0px rgba(0,0,0,0.75);*/
+	z-index: 10;
+}
+
+/*
+ ul.tags .new button {
+ margin: 0 auto;
+ width: 80%; display: block;
+ height: 24px;
+ border-radius: 2px;
+ border: solid 1px #666;
+ }
+
+ /* --------------------------------------------------------------------- */
+/* タグっぽいタグ　*/
+.tags .tag {
+	position: relative;
+	display: inline-block;
+	margin: 0 5px;
+	padding: 0 4px;
+	height: 20px;
+	line-height: 20px;
+	border-radius: 0 3px 3px 0;
+	box-shadow: 1px 1px 0px rgba(255,255,255,0.5);
+	background-color: #CCC;
+	font-size: 10px;
+	color: #fff;
+	text-shadow: none;
+	font-weight: normal;
+}
+.tags .tag:before {
+	top: 50%;
+	left: -11px;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	margin-top: -10px;
+	position: absolute;
+	pointer-events: none;
+	border-right-color: #CCC;
+	border-right-width: 8px;
+	border-top-width: 10px;
+	border-bottom-width: 10px;
+}
+.tags .tag:after {
+	top: 50%;
+	left: -3px;
+	border: none;
+	content: " ";
+	height: 4px;
+	width: 4px;
+	display: block;
+	line-height: 1px;
+	font-size: 1px;
+	border-radius: 4px;
+	background-color: #fff;
+	margin-top: -2px;
+	position: absolute;
+	pointer-events: none;
+}
+
+/* --------------------------------------------------------------------- */
+/* 付箋表示共通スタイル　*/
+li.fusen {
+	cursor: pointer;
+	/*cursor: move;*/
+	-khtml-user-drag: element;
+}
+#vwGrid .fusen, #vwFlat .fusen, #vwCalendar .fusen, #vwTrash .fusen {
+	cursor: move;
+}
+
+ul.todo > li.fusen {
+	background-color: rgba(255,255,255,0.5);
+	box-shadow: 1px 1px 1px rgba(0,0,0,0.5), inset 0px -1px 1px rgba(255,255,255,0.2);
+	/*border: solid 1px #CCC; */
+	/*border-radius: 3px;*/
+	overflow: hidden;
+	padding: 5px 5px 40px;
+	margin-bottom: 5px;
+	position: relative;
+}
+
+li.fusen > .ttl {
+	display: block;
+	margin-bottom: 5px;
+	font-size: 125%;
+	line-height: 1.5em;
+	overflow: hidden;
+	height: 3.0em;
+	/*2行分予約　そのかわり　はみ出しは消す */
+}
+
+li.fusen.OK {
+	opacity: 0.5;
+	box-shadow: none;
+	border: none;
+}
+li.fusen.OK:after {
+	content: "済";
+	font-size: 50px;
+	font-weight: bold;
+	color: #999;
+	position: absolute;
+	bottom: -16px;
+	right: -16px;
+	border: solid 8px #999;
+	display: block;
+	text-align: center;
+	height: 60px;
+	width: 60px;
+	line-height: 68px;
+	border-radius: 80px;
+	transform: rotate(-15deg);
+	opacity: 0.33;
+}
+
+li.fusen p.tags {
+	position: absolute;
+	top: 32px;
+	left: 4px;
+	right: 2px;
+	height: 25px;
+	line-height: 20px;
+	text-align: right;
+}
+
+li.fusen dl.tm {
+	position: absolute;
+	bottom: 0px;
+	line-height: 20px;
+	left: 0;
+	right: 0;
+}
+
+li.fusen i.done {
+	position: absolute;
+	right: 4px;
+	bottom: 8px;
+	background-color: #fff;
+	line-height: 18px;
+	font-size: 10px;
+	border-radius: 20px;
+	padding: 0 8px;
+	color: #333;
+	box-shadow: inset 1px 1px 1px #ccc;
+}
+li.fusen  i.done b {
+	font-weight: normal;
+	color: #ccc;
+}
+/*----*/
+ul.todo > li.fusen.drg {
+	/*visibility: hidden;*/
+}
+#SCR li.fusen.drg {
+	opacity: 0.3;
+}
+
+li.fusen .did {
+	text-align: right;
+}
+
+#vwGrid ol#gridMain {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+ol#gridMain >li {
+	position: absolute;
+}
+ol#gridMain dl.todowrap {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+ol#gridMain li.a1 {
+	top: 0;
+	left: 0;
+	width: 66%;
+	height: 66%;
+}
+ol#gridMain li.a2 {
+	top: 0;
+	right: 0;
+	width: 34%;
+	height: 66%;
+}
+ol#gridMain li.a3 {
+	bottom: 0;
+	left: 0;
+	width: 66%;
+	height: 34%;
+}
+ol#gridMain li.a4 {
+	bottom: 0;
+	right: 0;
+	width: 34%;
+	height: 34%;
+}
+ol#gridMain dt {
+	position: absolute;
+	top: 4px;
+	left: 4px;
+	right: 4px;
+	height: 30px;
+}
+ol#gridMain dd {
+	position: absolute;
+	top: 38px;
+	left: 4px;
+	right: 4px;
+	bottom: 4px;
+	overflow: auto;
+}
+ol#gridMain dd > div {
+	position: absolute;
+}
+
+/* --------------------------------------------------------------------- */
+/* fusenのなか  作業項目羅列の時 */
+li.fusen ol.check {
+	border-top: dotted 1px #ccc;
+}
+li.fusen ol.check li {
+	line-height: 20px;
+	border-bottom: dotted 1px #ccc;
+}
+li.fusen ol.check li p {
+	font-size: 88%;
+	margin-left: 10px;
+	text-indent: -5px;
+}
+
+li.fusen ol.check li.OK {
+	text-decoration: line-through;
+	color: #999;
+}
+
+li.fusen .tm {
+	color: #999;
+	line-height: 30px;
+}
+
+li.fusen .tm dt, #vwFlat  .tm dd {
+	text-align: center;
+}
+.tm .fa {
+	margin-right: 0.5ex;
+}
+
+i.done {
+	position: absolute;
+	right: 4px;
+	bottom: 8px;
+	background-color: #fff;
+	line-height: 18px;
+	font-size: 10px;
+	border-radius: 20px;
+	padding: 0 8px;
+	color: #333;
+	box-shadow: inset 1px 1px 1px #ccc;
+}
+i.done i {
+	font-weight: normal;
+	color: #ccc;
+}
+
+/* --------------------------------------------------------------------- */
+/* #vwGrid { font-size: 16px; } */
+#vwGrid {
+	background-color: #FFF;
+}
+#vwGrid > table {
+	width: 100%;
+	height: 100%;
+	border: none;
+	border-collapse: collapse;
+	table-layout: fixed;
+}
+#vwGrid > table td {
+	/*border: solid 4px #E0E0E0;*/
+	position: relative;
+	box-shadow: inset 0px 0px 10px #fff;
+	vertical-align: top;
+}
+#vwGrid > table td.over {
+	box-shadow: inset 0px 0px 10px #000;
+}
+
+#vwGrid #gridMain {
+	width: 62%;
+}/* 1:1.61 */
+#vwGrid > table tr.hurry {
+	height: 62%;
+}
+#vwGrid > table td > div {
+	height: 100%;
+	width: 100%;
+	padding: 20px 10px 0px;
+	/*
+	 top: 25px;
+	 bottom: 4px;
+	 right: 2px;
+	 left: 2px;*/
+	overflow: auto;
+}
+#vwGrid > table td ul {
+	width: 100%;
+}
+#vwGrid > table .hurry ul {
+	top: 5px;
+	bottom: 25px;
+}
+#vwGrid .a1 li.col {
+	height: 280px;
+	line-height: 30px;
+}
+#vwGrid .a2 li.col {
+	height: 154px;
+	font-size: 80%;
+	line-height: 18px;
+	color: #666;
+}
+#vwGrid .a3 li.col {
+	height: 175px;
+	font-size: 80%;
+	line-height: 18px;
+	color: #666;
+}
+#vwGrid .a4 li.col {
+	height: 40px;
+	font-size: 12px;
+	line-height: 20px;
+	color: #999;
+	padding: 1px 2px;
+	border-left: 12px solid #6C6;
+	padding-left: 6px;
+}
+#vwGrid li.col {
+	margin-bottom: 5px;
+}
+#vwGrid li.col.over {
+	box-shadow: inset 0 0 5px #000;
+}
+
+#vwGrid .a1 {
+	background-color: rgba(255,180,180,0.75);
+}
+#vwGrid .a1 .todo .ttl {
+	color: #111;
+	font-weight: bold;
+	text-shadow: 0px 1px 0px #fff;
+	margin-bottom: 10px;
+}
+#vwGrid .a1 .OK .ttl {
+	font-weight: normal;
+}
+#vwGrid .a2 {
+	background-color: rgba(255,255,180,0.75);
+}
+/*
+ #vwGrid .a4  ul.todo li { border: none; box-shadow: none; opacity: 0.75; }*/
+#vwGrid .a3 {
+	background-color: rgba(180,180,255,0.75);
+}
+
+#vwGrid .a4 .ttl {
+	font-size: inherit;
+	line-height: inherit;
+}
+
+#vwGrid .a4 li > * {
+	display: none;
+}
+#vwGrid .a4 li > p.ttl {
+	display: block;
+	height: auto;
+}
+
+#vwGrid .a2 li.OK:after, #vwGrid .a3 li.OK:after {
+	font-size: 40px;
+	height: 50px;
+	width: 50px;
+	line-height: 60px;
+	border: solid 6px #999;
+}
+#vwGrid .a4 li.OK:after {
+	font-size: 30px;
+	height: 35px;
+	width: 35px;
+	line-height: 40px;
+	border: solid 4px #999;
+}
+#vwGrid caption > b {
+	position: absolute;
+	display: block;
+	width: 140px;
+	height: 140px;
+	border: solid 10px #FFF;
+	border-radius: 200px;
+	color: #fff;
+	font-size: 120px;
+	line-height: 140px;
+	text-align: center;
+	background-color: #DDD;
+}
+
+#vwGrid b.hurry {
+	top: 33%;
+	margin-top: -70px;
+	left: 62%;
+	margin-left: -70px;
+	transform: rotate(15deg);
+}
+
+#vwGrid b.critical {
+	top: 62%;
+	margin-top: -70px;
+	left: 33%;
+	margin-left: -70px;
+	transform: rotate(-15deg);
+}
+
+#vwGrid ol.check {
+	overflow: hidden;
+}
+#vwGrid .a1 ol.check {
+	margin-bottom: 5px;
+	height: 121px; /* 4lines */
+}
+#vwGrid .a2 ol.check {
+	height: 43px; /* 2lines */
+}
+#vwGrid .a2 ol.check li {
+	height: 20px;
+	overflow: hidden;
+}
+
+#vwGrid .a3 ol.check {
+	height: 43px; /* 2lines */
+}
+#vwGrid .a3 ol.check li {
+	height: 20px;
+	overflow: hidden;
+}
+
+#vwGrid .a1 ol.check li {
+	height: 30px;
+	overflow: hidden;
+	line-height: 32px;
+	text-shadow: none;
+	border-bottom: dotted 1px #ccc;
+}
+#vwGrid .a1 ol.check li p {
+	/*color: #111;*/
+}
+#vwGrid .a1 ol.check li button {
+	color: #ccc;
+}
+#vwGrid .a1 ol.check li button:hover {
+	color: #000;
+	background-color: #fff;
+}
+
+#vwGrid .a1 ol.check li > .grid {
+	margin: 0 -5px;
+}
+#vwGrid .a1 ol.check li.OK {
+	display: none;
+}
+
+#vwGrid .a1 ol.check li button {
+	margin-top: 2px;
+	border: none;
+	border-radius: 2px;
+	height: 26px;
+	line-height: 28px;
+	cursor: pointer;
+	font-size: 10px;
+}
+#vwGrid ol.check >li {
+	display: block;
+}
+ol#gridMain >li {
+border: solid 2px #fff;
+border-radius: 8px;
+box-shadow: inset -1px -1px 0 rgba(0,0,0,0.25); 
+}
+#vwGrid ol#gridMain dt>span {
+	box-shadow: inset 1px 1px 1px #999;
+	line-height: 32px;
+	padding: 0 4px;
+	background-color: rgba(255,255,255,0.3);
+	border-radius: 4px;
+	text-align: center;
+	color: #666;
+	display: block; height:30px;overflow: hidden; 
+}
+@media screen and (max-width: 640px) {
+	#vwGrid .cnt .fa {
+		display:none;
+	}
+	#vwGrid .tm .fa {
+		display:none;
+	}
+
+}
+
+
+/* --------------------------------------------------------------------- */
+#vwEdit {
+	z-index: 200;
+	display: block;
+	background-color: rgba(0,0,0,0.75);
+}
+#vwEdit .wrapp {
+	position: absolute;
+	height: auto;
+	left: 50%;
+	width: 320px;
+	margin-left: -260px;
+}
+.editor/*弱い設定*/ {
+	margin: 5px -5px 5px;
+	padding: 5px;
+	border-radius: 3px;
+	background-color: #EEE;
+	position: relative;
+}
+
+#vwEdit #btnDelete {
+	position: absolute;
+	top: -10px;
+	right: 0;
+	width: 24px;
+	line-height: 24px;
+	z-index: 100;
+}
+#vwEdit .col {
+	overflow: hidden;
+}
+#vwEdit .editor .map {
+	height: 60px;
+	line-height: 30px;
+	position: relative;
+	margin: 10px 10px 0;
+}
+#vwEdit .editor ul {
+	width: 100%;
+	height: 100%;
+}
+#vwEdit .editor .map li {
+	width: 50%;
+	line-height: inherit;
+	float: left;
+	text-align: center;
+	z-index: 0;
+}
+.editor .map {
+	/*弱く*/
+	color: #FFF;
+}
+#vwEdit .editor .map b {
+	float: left;
+	position: absolute;
+	display: block;
+	background-color: #EEE;
+	line-height: 19px;
+	height: 20px;
+	width: 20px;
+	border-radius: 20px;
+	text-align: center;
+	font-size: 12px;
+	color: #fff;
+	z-index: 100;
+	opacity: 1;
+}
+#vwEdit input, #vwEdit .done p {
+	margin: 10px 0 0;
+	line-height: 20px;
+	height: 20px; /* IEbug */
+	border-radius: 4px;
+	border: none;
+	padding: 0 4px;
+}
+#vwEdit button {
+	margin: 10px 0 0;
+	width: 100%;
+	line-height: 20px;
+	border-radius: 4px;
+	border: none;
+	padding: 0px;
+	text-align: center;
+	color: #CCC;
+}
+#vwEdit button:hover {
+	color: #333;
+}
+#vwEdit input {
+	background-color: rgba(255,255,255,0.1);
+	box-shadow: inset 1px 1px 0 rgba(100,100,100,0.1);
+}
+#vwEdit input:active, #vwEdit input:focus {
+	background-color: #FFF;
+}
+#memoTtl {
+	font-weight: bold;
+}
+#vwEdit .limit {
+	text-align: center;
+}
+.done p {
+	color: #999;
+	font-size: 80%;
+}
+
+#vwEdit .editor .map b.hurry {
+	top: -10px;
+	left: 50%;
+	margin-left: -12px;
+}
+#vwEdit .editor .map b.critical {
+	top: 50%;
+	margin-top: -12px;
+	left: -10px;
+}
+#vwEdit .a1 b.hurry, #vwEdit .a2 b.hurry {
+	background-color: #F33;
+	opacity: 1;
+	border: solid 2px #fff;
+}
+#vwEdit .a1 b.critical, #vwEdit .a3 b.critical {
+	background-color: #F33;
+	opacity: 1;
+	border: solid 2px #fff;
+}
+
+#vwEdit .map .a1 {
+	border-radius: 10px 0 0 0;
+}
+#vwEdit .map .a2 {
+	border-radius: 0 10px 0 0;
+}
+#vwEdit .map .a3 {
+	border-radius: 0 0 0 10px;
+}
+#vwEdit .map .a4 {
+	border-radius: 0 0 10px 0;
+}
+#vwEdit .a1 .a1, #vwEdit .a2 .a2, #vwEdit .a3 .a3, #vwEdit .a4 .a4 {
+	box-shadow: inset 0 0 3px #000;
+}
+#doneList .ttl {
+	font-size: 80%;
+	text-align: center;
+	color: #666;
+	border-bottom: dotted 1px #ccc;
+}
+#doneList button.OK {
+	color: #111;
+	text-shadow: 0 1px #fff;
+	background-color: rgba(255,255,255,0.1);
+	box-shadow: inset 1px 1px 0 rgba(100,100,100,0.1);
+}
+
+#memoLmtDt, #memoLmtTm {
+	visibility: hidden;
+}
+
+#prog {
+	width: 34px;
+	height: 34px;
+	text-align: center;
+	position: absolute;
+	top: 90px;
+	right: -5px;
+	z-index: 100;
+	border: solid 2px #999;
+	border-radius: 5px;
+	background-color: #fff;
+	font-size: 12px;
+	line-height: 34px;
+	box-shadow: 1px 1px 1px #000;
+	color: #999;
+	opacity: 0.3;
+}
+.done #prog {
+	top: 80px;
+	right: 5px;
+	border: solid 2px #F00;
+	font-size: 30px;
+	overflow: hidden;
+	border-radius: 20px;
+	color: #F00;
+	transform: rotateZ(18deg);
+	background-color: transparent;
+	box-shadow: 0px 0px 5px #FFF;
+	opacity: 0.75;
+}
+#vwEdit .tasks {
+	margin-bottom: 5px;
+}
+#vwEdit i.new {
+	line-height: 40px;
+	font-size: 10px;
+	color: #fff;
+	background-color: #CCC;
+}
+
+#vwEdit .ctrl {
+	position: absolute;
+	width: 60px;
+	height: 100px;
+	right: -55px;
+	top: 50px;
+	background-color: #fff;
+	border-radius: 4px;
+	padding: 0 10px;
+}
+#vwEdit .ctrl:after {
+	position: absolute;
+	top: 50%;
+	left: -10px;
+	margin-top: -15px;
+	content: '';
+	width: 0;
+	height: 0;
+	display: block;
+	border-right: solid 15px #fff;
+	border-top: solid 15px transparent;
+	border-bottom: solid 15px transparent;
+}
+
+#vwEdit .ctrl button {
+	color: #333;
+}
+#vwEdit .ctrlCut {
+	position: absolute;
+	bottom: -10px;
+	right: 4px;
+	width: 24px;
+}
+#vwEdit .ctrlCut button {
+	box-shadow: 1px 1px 1px #000;
+	color: #333;
+}
+
+.grid i.tm {
+	font-size: 10px;
+	margin-top: 10px;
+	color: #999;
+	font-weight: normal;
+	text-align: right;
+	display: block;
+}
+#vwEdit .workTime {
+	font-size: 14px;
+	line-height: 22px;
+}
+#vwEdit #estimate {
+	position: relative;
+}
+#vwEdit #estimate .val {
+	display: block;
+	height: 20px;
+	position: absolute;
+	z-index: 100;
+	width: 100%;
+	text-align: center;
+}
+#vwEdit #estimate .checked {
+	display: block;
+	height: 20px;
+	position: absolute;
+	width: 100%;
+	border-radius: 3px;
+	z-index: 1;
+	border-radius: 3px;
+	box-shadow: inset 1px 1px 0 rgba(0,0,0,0.3)
+}
+#vwEdit #estimate .checked b {
+	display: block;
+	height: 20px;
+	background-color: rgba(255,255,255,0.66);
+	border-radius: 3px;
+}
+
+#vwEdit .sidebar {
+	font-size: 14px;
+	width: 200px;
+	position: absolute;
+	top: 0;
+	right: -220px;/* margin-left:200px;*/
+	z-index: 0;
+	line-height: 24px;
+}
+#vwEdit .cal .ttl {
+}
+#vwEdit .cal .week li {
+	padding: 5px 0;
+}
+#vwEdit .cal a {
+	display: block;
+	border-radius: 5px;
+	background-color: rgba(255,255,255,0.2);
+	box-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+	text-decoration: none;
+	color: #999;
+}
+#vwEdit .cal a.selected {
+	background-color: #FFF;
+	box-shadow: inset 1px 1px 1px #000;
+	font-weight: bold;
+	color: #000;
+	cursor: default;
+}
+#vwEdit .cal a.past {
+	box-shadow: none;
+	background-color: transparent;
+	cursor: default;
+}
+#vwEdit .cal a.future {
+	display: none;
+}
+#vwEdit .cal a.today {
+	/*color: #000;*/
+	font-weight: bold;
+}
+#vwEdit .cal .sat {
+	background-color: #99F;
+}
+#vwEdit .cal .sun {
+	background-color: #F99;
+}
+#vwEdit .cal em.tm {
+	font-size: 12px;
+	display: block;
+	line-height: 26px
+}
+#vwEdit .cal a em.tm {
+	line-height: 20px
+}
+#vwEdit .cal em.tm i {
+	margin-right: 0.5ex;
+}
+
+#vwEdit .tags > li {
+	display: inline-block;
+	padding-right: 2ex;
+}
+#vwEdit .tags .rmvTag {
+	width: 1.5em;
+}
+#vwEdit .tags li > * {
+	vertical-align: baseline;
+}
+#vwEdit .tags li span {
+	display: inline-block;
+	max-width: 180px;
+	height: 24px;
+	margin-top: 10px;
+	overflow: hidden;
+	vertical-align: bottom;
+}
+#vwEdit .tags li .tag {
+	color: #000;
+}
+
+/* スマホで小さめ表示　*/
+@media screen and (max-width: 640px) {
+	#vwEdit .wrapp {
+		width: 300px;
+		left: 50%;
+		margin-left: -150px;
+	}
+	#vwEdit .sidebar {
+		top: auto;
+		width: 300px;
+		left: 50%;
+		margin-left: -150px;
+	}	
+}
+
+/* --------------------------------------------------------------------- */
+/* 川　*/
+#vwFlat {
+	font-size: 83%;
+}
+#vwFlat table.wrap {
+	height: 100%;
+	width: 100%;
+	table-layout: fixed;
+	border-collapse: collapse;
+	border: none;
+	border-collapse: separate;
+	border-spacing: 0;
+}
+#vwFlat table.wrap th, #vwFlat table.wrap td {
+	cursor: pointer;
+}
+
+#vwFlat thead th {
+	height: 40px;
+	width: 22%;
+	border-bottom: solid 1px #999;
+	position: relative;
+	text-shadow: 0 1px 0 #EEE;
+}
+#vwFlat thead th b {
+	position: absolute;
+	right: 4px;
+	top: 50%;
+	margin-top: -10px;
+	display: block;
+	padding: 0 1ex;
+	height: 20px;
+	line-height: 22px;
+	background-color: #FFF;
+	border-radius: 20px;
+	box-shadow: inset 1px 1px 0px rgba(0,0,0,0.25);
+}
+
+#vwFlat thead th.wide {
+	width: 28%;
+}
+
+#vwFlat  td.a4 {
+	font-size: 83%;
+}
+
+#vwFlat td, #vwFlat th {
+	border-top: solid 1px #EEE;
+	border-left: solid 1px #EEE;
+	border-right: solid 1px #999;
+	border-bottom: solid 1px #999;
+}
+
+#vwFlat .wrap tbody td {
+	vertical-align: top;
+	overflow: hidden;
+}
+#vwFlat .wrap tbody td ul {
+	height: 100%;
+	width: auto;
+	margin: 5px 0;
+	overflow: auto;
+	padding: 1px 2.5% 50px;
+}
+#vwFlat .a3 .todo > li,
+#vwFlat .a1 .todo > li {
+	margin-bottom: 10px;
+	min-height:200px;
+}
+
+/* --------------------------------------------------------------------- */
+/* 足跡　*/
+#vwTimeLine {
+}
+#vwTimeLine .inner {
+	width: 320px;
+	height: 100%;
+	margin: 0 auto;
+}
+#vwTimeLine .fusen {
+	margin-left: -8px;
+	margin-right: -8px;
+	padding-bottom: 0;
+}
+#vwTimeLine .dt {
+	text-align: center;
+	width: 50px;
+	display: block;
+	font-size: 10px;
+	color: #ccc;
+	margin-bottom: 5px;
+	background-color: #666;
+	box-shadow: 0, 0, 1, #333;
+}
+#vwTimeLine .dt b {
+	display: block;
+	background-color: #EEE;
+	font-size: 14px;
+	font-weight: bold;
+	color: #333;
+	line-height: 30px;
+	box-shadow: 0 1px 1px #333;
+}
+#vwTimeLine .dt b sub {
+	font-size: 10px;
+	font-weight: normal;
+}
+
+#vwTimeLine dl dt {
+	font-size: 10px;
+}
+#vwTimeLine dl dd li {
+	margin-bottom: 5px;
+	border-bottom: dashed 1px #999;
+}
+#vwTimeLine dl dd li:last-child {
+	border-bottom: none;
+}
+
+#vwTimeLine dl dd {
+	font-size: 10px;
+}
+#vwTimeLine dl dd b {
+	font-weight: normal;
+}
+#vwTimeLine dl dd .tm {
+	color: #333;
+	text-align: center;
+}
+
+#vwTimeLine li.edt .ttl, #vwTimeLine li.edt .fa {
+	font-weight: normal;
+	color: #666;
+}
+#vwTimeLine li.fin .ttl {
+	font-weight: bold;
+}
+
+#vwTimeLine .updt.grid > span {
+	text-align: center;
+	color: #999;
+}
+
+#vwTimeLine {
+}
+#vwTimeLine .more {
+	margin: 0 auto 5px;
+	width: 120px;
+	padding: 2px 0 0 0;
+	text-align: center;
+	background-color: #CCC;
+	border: solid 2px #DDD;
+	box-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+	border-radius: 4px;
+	color: #888;
+	cursor: pointer;
+}
+#vwTimeLine .bar {
+	display: block;
+	height:20px;
+	margin-top: 10px;
+	border: 1px solid #fff;
+	border-radius: 5px;
+	overflow: hidden;
+}
+#vwTimeLine .bar span{
+	display: block;
+	height: 20px;
+	float: left;
+	text-align: center;
+	font-size: 10px;
+}
+#vwTimeLine .sum{
+	line-height: 30px;
+	text-align: right;
+}
+
+/* --------------------------------------------------------------------- */
+/* カレンダー */
+/* 実施日のアサイン　43フォルダをイメージ */
+#vwCalendar {
+	font-size: 14px;
+}
+#vwCalendar .inner {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+#vwCalendar #asign {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+#vwCalendar #asign > li {
+	height: 100%;
+	overflow: auto;
+}
+
+#vwCalendar .header {
+	width: 100%;
+	text-align: left;
+	height: 40px;
+	line-height: 40px;
+	padding-left: 1ex;
+}
+
+#vwCalendar .folders {
+}
+#vwCalendar .folders > li {
+	background-color: #FED;
+	border-top: solid 1px rgba(255,255,255,0.5);
+	border-left: solid 1px rgba(255,255,255,0.5);
+	border-radius: 4px 0 0 0;
+	box-shadow: 0 -1px 4px rgba(0,0,0,0.7);
+	position: relative;
+	margin-bottom: 0;
+}
+#vwCalendar .folders li.day {
+	background-color: #FFF;
+}
+
+#vwCalendar .folders > li .tab {
+	position: absolute;
+	top: -26px;
+	background-color: #FED;
+	border-top: solid 1px #FFF;
+	border-left: solid 1px #FFF;
+	border-radius: 2px 2px 0 0;
+	box-shadow: 0px -2px 3px rgba(0,0,0,0.5);
+	padding: 0 1em;
+	line-height: 25px;
+}
+#vwCalendar .folders li.day .tab {
+	background-color: #FFF;
+}
+
+#vwCalendar .folders > li.fire {
+	background-color: #BBB;
+}
+#vwCalendar .folders > li.fire > .tab {
+	background-color: #BBB;
+}
+#vwCalendar .folders li.odd {
+	background-color: #EEE;
+}
+#vwCalendar .folders li.odd > .tab {
+	background-color: #EEE;
+}
+
+#vwCalendar .folders li.wd0 {
+	background-color: #FDD;
+}
+#vwCalendar .folders li.wd0 > .tab {
+	background-color: #FDD;
+}
+#vwCalendar .folders li.wd6 {
+	background-color: #DDF;
+}
+#vwCalendar .folders li.wd6 > .tab {
+	background-color: #DDF;
+}
+
+#vwCalendar .folders > li.week {
+	/*padding-bottom: 30px;*/
+}
+#vwCalendar .folders > li.day {
+	padding-bottom: 10px;
+}
+
+#vwCalendar .folders > li .thr {
+	right: 10px;
+	width: 200px;
+}
+#vwCalendar .folders > li .thl {
+	left: 10px;
+	width: 120px;
+}
+#vwCalendar .folders > li .tab i {
+	font-weight: normal;
+}
+
+#vwCalendar .folders .folders {
+	margin: 10px 0px 0px 30px;
+}
+
+#vwCalendar .folders .todo {
+	margin: 15px 5px 60px;
+	overflow: hidden;
+}
+#vwCalendar .folders li.week > .todo {
+	margin: 20px 18px 0px 18px;
+	overflow: hidden;
+	padding-bottom: 40px;
+}
+
+#vwCalendar .folders li:last-child .todo {
+	/*margin-bottom: 0;*/
+}
+
+#vwCalendar .folders .todo .fusen {
+	height: 60px;
+	padding: 0px 5px;
+	font-size: 75%;
+	line-height: 15px;
+	margin-bottom: 5px;
+}
+#vwCalendar .folders .todo .tall {
+	height: 125px;
+}
+
+#vwCalendar .folders .todo .m15 {
+	height: 15px;
+	margin-bottom: 50px;
+	overflow: visible;
+}
+
+#vwCalendar .folders .todo .m30 {
+	height: 30px;
+	margin-bottom: 35px;
+	overflow: visible;
+}
+#vwCalendar .folders .todo .m45 {
+	height: 45px;
+	margin-bottom: 20px;
+	overflow: visible;
+}
+/* 済がはみ出す…　*/
+#vwCalendar .folders .todo .m15:after {
+	display: none;
+}
+#vwCalendar .folders .todo .m30:after {
+	display: none;
+}
+#vwCalendar .folders .todo .m45:after {
+	display: none;
+}
+
+
+/* 右だけ　*/
+#vwCalendar #scheduled .fusen .ttl {
+	height: 60px;
+	overflow: hidden;
+	font-size: inherit;
+	text-align: left;
+	line-height: 16px;
+}
+#vwCalendar #scheduled .m15 .ttl {
+	display: block;
+	height: 30px;
+	position: absolute;
+	top: 27px;
+	left: 10px;
+	right: 0;
+	background-color: rgba(255,255,255,0.7);
+	border-radius: 4px;
+	overflow: visible; /*: afterが見えない！*/
+	padding: 0 4px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+}
+#vwCalendar #scheduled li.day .m15 .ttl{
+	background-color: rgba(200,200,200,0.5);
+}
+
+#vwCalendar #scheduled .m15 .ttl >span{
+ /*: afterが見えない！*/
+	margin-top: 0.1em;
+	max-height:2.6em;
+	/*line-height:1.3em;*/
+	overflow: hidden;
+	display: block;
+}
+#vwCalendar #scheduled .m15 .ttl:after {
+	display: block;
+	content: " ";
+	z-index: 10000;
+	position: absolute;
+	top: -18px;
+	left: 10px;
+	/*background-color: #000;*/
+	height: 0px;
+	width: 0px;
+	border-top: none;
+	border-left: 2px solid transparent;
+	border-right: 10px solid transparent;
+	border-bottom: 18px solid  rgba(255,255,255,0.7);;
+}
+#vwCalendar #scheduled li.day .m15 .ttl:after{
+	border-bottom: 18px solid rgba(200,200,200,0.5);	
+}
+
+#vwCalendar .fusen .updt {
+	color: #999;
+	position: absolute;
+	bottom: 5px;
+	width: 95%;
+	margin: 0 auto;
+}
+
+#vwCalendar .tab i {
+	float: right;
+}
+
+#vwCalendar li.week.over {
+	background-color: #FFF;
+}
+#vwCalendar li.week.over > .tab {
+	background-color: #FFF;
+}
+#vwCalendar li.day.over {
+	background-color: #FFF;
+}
+#vwCalendar li.day.over > .tab {
+	background-color: #FFF;
+}
+
+#vwCalendar li#noLimit.over {
+	background-color: #CCC;
+	border-radius: 8px;
+}
+#vwCalendar li#noLimit #UNDEF  {
+	padding-right: 10px;
+}
+
+#vwCalendar .todo {
+	position: relative;
+}
+#vwCalendar #scheduled .fusen .updt {
+	display: none;
+}
+
+/* 狭小画面での救済　*/
+#vwCalendar li#noLimit.col12 {
+	position: absolute;
+	height: 150px;
+}
+#vwCalendar li#scheduled.col12 {
+	position: absolute;
+	top: 150px;
+	bottom: 160px;
+}
+
+#vwCalendar li.tmSum {
+	display: block;
+	float: right;
+	padding: 10px 5px 0;
+}
+#vwCalendar #scheduled .fusen .tm {
+	/* 大付箋　右下に時間表示 */
+	position: absolute;
+	right: 8px;
+	bottom: 4px;
+	line-height: 16px;
+	font-size: 12px;
+}
+
+/* 左側　ダイジェスト表示追加　*/
+#noLimit ul.task {
+	height: 85px;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	line-height: 20px;
+	border-top: dashed 1px #ccc;
+}
+#noLimit ul.task > li {
+	margin: 0;
+	padding: 0 0 0 10px;
+	line-height: 20px;
+	font-size: 12px;
+	list-style: none;
+	border-bottom: dashed 1px #ccc;
+}
+#noLimit .ttl {
+	height: 3em;
+	line-height: 1.5;
+	overflow: hidden;
+}
+
+/* balloon-1 top */
+/*
+ #vwCalendar #scheduled .m15 .ttl {
+ color: #19283C;
+ position: relative;
+ display: inline-block;
+ padding: 0 4px;
+ text-align: center;
+ background: #F6F6F6;
+ border: 1px solid #19283C;
+ z-index: 0;
+ }
+ #vwCalendar #scheduled .m15 .ttl:before {
+ content: "";
+ position: absolute;
+ top: -8px; left: 50%;
+ margin-left: -9px;
+ display: block;
+ width: 0px;
+ height: 0px;
+ border-style: solid;
+ border-width: 0 9px 9px 9px;
+ border-color: transparent transparent #F6F6F6 transparent;
+ z-index: 0;
+ }
+
+ #vwCalendar #scheduled .m15 .ttl:after{
+ content: "";
+ position: absolute;
+ top: -12px; left: 50%;
+ margin-left: -10px;
+ display: block;
+ width: 0px;
+ height: 0px;
+ border-style: solid;
+ border-width: 0 10px 10px 10px;
+ border-color: transparent transparent #19283C transparent;
+ z-index: -1;
+ }
+ */
+
+#vwCalendar .noTask {
+	margin: 10px 20px 0;
+	font-weight: bold;
+	padding: 5px;
+	border: dashed 2px #DDD;
+	border-radius: 6px;
+	text-align: center;
+	font-size: 80%;
+	color: #DDD;
+}
+/* 未達成の表示　*/
+#vwCalendar .past {
+	background-color: #fCC;
+	border: solid 2px #FFF;
+	margin: 5px;
+	padding: 5px;
+	text-align: center;
+	font-size: 80%;
+	box-shadow: 1px 2px 1px rgba(0,0,0,0.2), inset 1px 1px 0px rgba(0,0,0,0.2);
+}
+#vwCalendar .search{
+	position: absolute;
+	top:4px;
+	right:4px;
+}
+
+/* --------------------------------------------------------------------- */
+/*
+ tag一覧　→　projectViewに統合
+ * */
+#vwTag .wrapper {
+	display: block;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	font-size: 83%;
+}
+#vwTag #tags {
+	display: block;
+	width: 2400px; /* 180*tag */
+	height: 100%;
+	overflow: hidden;
+}
+#vwTag #tags > li {
+	height: 100%;
+	height: 100%;
+	float: left;
+	width: 320px;
+	position: relative;
+	border-left: solid 1px #fff;
+	border-right: solid 1px #000;
+}
+
+#vwTag #tags > li dl dt {
+	position: absolute;
+	width: 100%;
+	top: 0;
+	line-height: 26px;
+	z-index: 10;
+	border-left: solid 1px #fff;
+	box-shadow: 0 2px 1px #000;
+}
+#vwTag #tags > li dl dt input {
+	height: 20px;
+	margin: 3px 0;
+	border-radius: 3px;
+	border: none;
+	line-height: 22px;
+	padding: 0 1ex;
+	box-shadow: inset 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+#vwTag .ttl em {
+	display: inline-block;
+	line-height: 20px;
+	background-color: #eee;
+	border-radius: 4px;
+	padding: 0 6px;
+	box-shadow: inset 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+#vwTag #tags > li dl dd {
+	position: absolute;
+	top: 60px;
+	width: 100%;
+	height: auto;
+	bottom: 0;
+	overflow: auto;
+	z-index: 1;
+}
+#vwTag #tags > li dl dd .todo {
+	margin: 10px 10px 30px 10px;
+}
+
+#vwTag #tags .rmv {
+	width: 100%;
+	height: 20px;
+	line-height: 20px;
+	border: solid 0px transparent;
+	border-radius: 4px;
+}
+#vwTag .check {
+	margin-left: 5px; ;
+}
+
+/* --------------------------------------------------------------------- */
+/* --------------------------------------------------------------------- */
+/* --------------------------------------------------------------------- */
+/* --------------------------------------------------------------------- */
+/* --------------------------------------------------------------------- */
+/* --------------------------------------------------------------------- */
+/* --------------------------------------------------------------------- */
+
+/* --------------------------------------------------------------------- */
+/* とどのて　splash 表示　*/
+#vwSplash {
+	color: #666;
+	font-size: 200%;
+}
+#vwSplash .fusen {
+	position: absolute;
+	width: 240px;
+	height: 240px;
+	left: 50%;
+	top: 50%;
+	margin: -120px auto auto -120px;
+	box-shadow: 1px 2px 5px rgba(0,0,0,0.5);
+	background: #FF6;
+}
+#vwSplash .fusen .inner {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+#vwSplash .fusen .inner h1 {
+	padding: 10px 0;
+	height: 40px;
+	line-height: 40px;
+	position: absolute;
+	top: 50%;
+	margin-top: -30px;
+	text-align: center;
+	width: 100%;
+}
+/* 右下のめくれ */
+#vwSplash .fusen .inner:after {
+	position: absolute;
+	display: block;
+	width: 0px;
+	height: 0px;
+	border-top: solid 8px rgba(255,255,255,0.75);
+	border-left: solid 8px rgba(255,255,255,0.75);
+	border-right: solid 8px rgba(0,0,0,0.2);
+	border-bottom: solid 8px rgba(0,0,0,0.2);
+	bottom: 0;
+	right: 0;
+	background-color: transparent;
+	content: "";
+	box-shadow: -1px -1px 1px rgba(0,0,0,0.1);
+}
+/* --------------------------------------------------------------------- */
+.graph {
+	display: block;
+    margin-top: 10px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    overflow: hidden;
+	height:40px;
+	line-height:40px;
+	background-color: #336;
+}
+.graph b{
+	display: block;
+	float:left;
+	background-color: #eee;
+	font-size:10px;
+	text-align: center;
+	height:40px;
+	line-height:40px;
+}
+.graph b.del{ 
+	background-color: #333;
+	color: #fff;
+}
+
+.graph b.fin{ 
+	background-color: #9F9;
+}
+.graph b.run{ 
+	background-color: #FED;
+}
+.graph b.ns{ 
+	background-color: #FCC;
+}

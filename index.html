@@ -1,0 +1,582 @@
+<!doctype html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=yes">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="author" content="谷治 修/Google+">
+	<meta name="reply-to" content="https://twitter.com/yazioh">
+	<title>とどのて ToDo noTe</title>
+	<link rel="stylesheet" href="css/style.css?20171102" media="all" />
+	<link rel="stylesheet" href="css/font-awesome.min.css" media="all" />
+	<link rel="shortcut icon" href="./favicon.ico" type="image/vnd.microsoft.icon" />
+	<link rel="icon" href="./favicon.ico" type="image/vnd.microsoft.icon" />
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:site" content="@yazioh" />
+	<meta name="twitter:creator" content="@yazioh" />
+
+	<script src="js/jquery-2.2.3.min.js"></script>
+	<script src="js/jquery.mobile.events.js"></script>
+	<script src="js/lib.js"></script>
+	<script src="js/data.js"></script>
+	<script src="js/filter.js"></script>
+	<script src="js/vwSideBar.js"></script>
+	<script src="js/vwEdit.js"></script>
+	<script src="js/vwGrid.js?20160330"></script>
+	<script src="js/vwFlat.js"></script>
+	<script src="js/vwTimeLine.js"></script>
+	<script src="js/vwCalendar.js?20170608.2"></script>
+	<!-- script src="js/vwTag.js"></script-->
+	<!-- script src="js/vwConfig.js"></script-->
+	<!-- script src="js/vwTrash.js"></script-->
+	<!-- script src="js/vwHelper.js"></script-->
+
+	<!-- 起動セクションを含むので、他を読み込み終わってから -->
+	<script src="js/memo.js"></script>
+</head>
+<body id="SCR">
+	<section id="vwSplash" class="page show">
+		<div class="fusen">
+			<div class="inner">
+				<!-- 猫の手も借りたいあなたに.. -->
+				<h1><ruby>ToDo noTe<rt>とどのて</rt></ruby></h1>
+			</div>
+		</div>
+	</section>
+
+	<section id="vwEdit" class="page view hide">
+		<div class="wrapp">
+			<div class="editor" style="z-index:10">
+		        <button id="btnDelete"><i class="fa fa-remove"></i></button>
+
+			    <div class="grid">
+			        <div class="col3 col">
+			        	<div class="map">
+				            <!--b class="hurry"><i class="fa fa-rocket"></i></b-->
+				            <!--b class="critical"><i class="fa fa-key"></i></b-->
+				            <ul>
+				                <li class="a1 area" data-area="a1"><i class="fa fa-warning"></i></li>
+				                <li class="a2 area" data-area="a2"><i class="fa fa-rocket"></i></li>
+				                <li class="a3 area" data-area="a3"><i class="fa fa-key"></i></li>
+				                <li class="a4 area" data-area="a4"><i class="fa fa-coffee"></i></li>
+				            </ul>
+			        	</div>
+			        </div>
+			        <div class="col9 col" style="padding-top:10px;">
+				        <p class="ttl"><input type="text" id="memoTtl" /></p>
+						<div class="grid mt10 workTime">
+				        	<!-- 2行目 -->
+					        <div class="col6 col">
+					       		<div class="combi">
+					        	<em>1U</em><select id="unitTime"></select>
+						        </div>
+					        </div>
+					        <div id="estimate" class="col6">
+					            <p class="checked"><b></b></p>
+					            <p class="val"></p>
+							</div>
+						</div>
+			        </div>
+			    </div>
+
+		        <ol class="tasks doing">
+		        </ol>
+		        <div class="tasks grid new">
+	        		<span class="col1"><i class="new">New</i></span>					<span class="col11"><input type="text" /></span>
+		        </div>
+		        <div class="ctrl hide">
+		        	<button data-cmd="up"><i class="fa fa-angle-double-up"></i></button>
+		        	<button data-cmd="rmv"><i class="fa fa-times"></i></button>
+		        	<button data-cmd="dwn"><i class="fa fa-angle-double-down"></i></button>
+		        </div>
+		        <div class="ctrlCut">
+		        	<button id="cutOff"><i class="fa fa-cut"></i> </button>
+		        </div>
+			</div>
+				
+			<div id="doneList" class="editor hide" style="z-index:1" > 
+				<p class="ttl">済 title</p>
+		        <ol class="tasks done">
+		        </ol>
+			</div>
+			<!-- 一覧用テンプレ -->
+			<ol class="template hide">
+				<li class="grid tmpDoing">
+					<div class="col1"><button class="ck col1"><i class="fa fa-check"></i></button></div>
+					<div class="col10"><input class="title" type="text" value="" /></div>
+					<div class="col1"><button class="mnu"><i class="fa fa-bars"></i></button></div>
+				</li>
+				<li class="grid tmpDone" >
+					<div class="col1"><button class="ck col1 OK"><i class="fa fa-check"></i></button></div>
+					<div class="col9"><p class="title"></p></div>
+					<div class="col2"><i class="tm"></i></div>
+				</li>
+			</ol>
+			
+	
+			<div class=" sidebar">
+				<div class="schedule editor">
+					<h3 class="ttl c"><i class="fa fa-calendar-o"></i> Schedule<!-- --></h3>
+					<span class="doit"> </span>				
+					<div class="cal">
+					<ol class="week c">
+						<li class="grid wkH">
+							<span class="col8"><a class="btn" data-did="D00000">今週</a></span>
+							<em class="col4 tm"><i class="fa fa-clock-o"></i>40h</em>
+						</li>
+		
+						<li id="wk0" class="grid div7">
+							<a class="col">1</a>
+							<a class="col">2</a>
+							<a class="col">3</a>
+							<a class="col">4</a>
+							<a class="col">5</a>
+							<a class="col">6</a>
+							<a class="col">7</a>
+						</li>
+						<li class="grid wkH">
+							<span class="col8"><a class="btn" data-did="D00000">来週</a></span>
+							<em class="col4 tm"><i class="fa fa-clock-o"></i>40h</em>
+						</li>
+		
+						<li id="wk1" class="grid div7">
+							<a class="col">1</a>
+							<a class="col">2</a>
+							<a class="col">3</a>
+							<a class="col">4</a>
+							<a class="col">5</a>
+							<a class="col">6</a>
+							<a class="col">7</a>
+						</li>
+		
+						<li class="grid wkH">
+							<span class="col8"><a class="btn" data-did="D00000">～2/6</a></span>
+							<em class="col4 tm"><i class="fa fa-clock-o"></i>40h</em>
+						</li>
+		
+						<li class="grid wkH">
+							<span class="col8"><a class="btn" data-did="D00000">～2/6</a></span>
+							<em class="col4 tm"><i class="fa fa-clock-o"></i>40h</em>
+						</li>
+		
+						<li class="grid wkH">
+							<span class="col8"><a class="btn" data-did="D00000">～2/6</a></span>
+							<em class="col4 tm"><i class="fa fa-clock-o"></i>40h</em>
+						</li>
+	
+					</ol>
+					</div>
+				</div>
+				
+				<div class="tags editor">
+					<h3 class="ttl c"><i class="fa fa-tags"></i> Tags</h3>
+					<ul class="tags">
+					</ul>
+					
+					<ul class="templete hide">
+						<li><button class="rmvTag"><i class="fa fa-remove"></i></button>
+						<span></span></li>
+					</ul>
+				</div>
+			</div>
+
+		</div>	
+	</section><!-- #vwEdit --->
+	<section id="vwEdit2" class="page view hide">
+		<div class="wrapp">
+
+		</div>	
+	</section>
+	
+
+	<section id="vwGrid" class="page view hide">
+		<ol id="gridMain">
+			<li class="a1">
+				<dl class="todowrap hurry">
+					<dt class="grid">
+						<span class="col8 ttl c"><i class="fa fa-warning"></i> 至急・重要</span>
+						<span class="col2 cnt"><i class="fa fa-sticky-note-o"></i> <b></b></span>
+						<span class="col2 tm"><i class="fa fa-clock-o"></i> <b></b></span>
+					</dt>
+					<dd><ul class="todo grid"><li class="fusen"></li></ul></dd>
+				</dl>
+			</li>
+			<li class="a2">
+				<dl class="todowrap hurry">
+					<dt class="grid">
+						<span class="col4 ttl"><i class="fa fa-rocket"></i> 急ぎ</span>
+						<span class="col4 cnt"><i class="fa fa-sticky-note-o"></i> <b></b></span>
+						<span class="col4 tm"><i class="fa fa-clock-o"></i> <b></b></span>
+					</dt>
+					<dd><ul class="todo grid"></ul></dd>
+				</dl>
+			</li>
+			<li class="a3">
+				<dl class="todowrap slow">
+					<dt class="grid">
+						<span class="col8 ttl"><i class="fa fa-key"></i> 重要</span>
+						<span class="col2 cnt"><i class="fa fa-sticky-note-o"></i> <b></b></span>
+						<span class="col2 tm"><i class="fa fa-clock-o"></i> <b></b></span>
+					</dt>
+					<dd><ul class="todo grid"></ul></dd>
+				</dl>
+			</li>
+			<li class="a4">
+				<dl class="todowrap slow">
+					<dt class="grid">
+						<span class="col12 ttl"><i class="fa fa-coffee"></i> できるときに</span>
+						<!--span class="col3 cnt"><i class="fa fa-sticky-note-o"></i><b>15</b></span-->
+						<!--span class="col3 tm"><i class="fa fa-clock-o"></i><b>15:10</b></span -->
+					</dt>
+					<dd><ul class="todo grid"></ul></dd>
+				</dl>
+			</li>
+		</ol>
+		<ul class="template hide">
+			<!-- 付箋のテンプレ　-->
+			<li class="col fusen" draggable="true">
+				<i class="done"></i>
+				<p class="ttl"></p>
+				<ol class="check"></ol>
+				<p class="date">&nbsp;</p>
+				<p class="tags"></p>
+			</li>
+		</ul>
+	</section><!-- vwGrid -->
+
+	<section id="vwFlat" class="page view hide">
+		<table class="wrap">
+			<thead>
+				<tr class="">
+					<th class="a2"><i class="fa fa-rocket"></i> 急ぎ<b></b></th>
+					<th class="a1 wide"><i class="fa fa-warning"></i> 至急・重要<b></b></th>
+					<th class="a3 wide"><i class="fa fa-key"></i> 重要<b></b></th>
+					<th class="a4"><i class="fa fa-coffee"></i> できるときに<b></b></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="a2"><ul class="todo"></ul></td>
+					<td class="a1"><ul class="todo"></ul></td>
+					<td class="a3"><ul class="todo"></ul></td>
+					<td class="a4"><ul class="todo"></ul></td>
+				</tr>
+			</tbody>
+		</table>
+
+		<ul class="template hide">
+			<!-- 付箋のテンプレ　-->
+			<li class="fusen" draggable="true">
+				<p class="ttl"></p>
+				<i class="done"></i>
+				<p class="tags"></p>
+				<ol class="check"></ol>
+			</li>
+		</ul>
+	</section><!-- /vwFlat -->
+
+	<!-- -->
+	<section id="vwTimeLine" class="page view hide">
+		<div class="inner">
+			<div class="row">
+				<class class="col3" id="vwTlWeek"></class>
+				<class class="col9" id="vwTlDate">
+					<div class="more"><i class="fa fa-history"></i> more</div>
+					<ul class="today todo">
+		
+					</ul>
+				</class>
+			</div>
+		</div>
+		<ul class="template hide">
+			<li class="dateHad">
+				<div class="row">
+					
+					
+				</div>
+			</li>
+			<li class="fusen">
+				
+				
+			</li>
+		</ul>
+	</section><!-- /#vwTimeLine -->
+
+	<!-- -->
+	<section id="vwTag" class="page view hide">
+		<div class="wrapper">
+			<div class="row">
+				<div class="col5" >
+					<div class="row">
+						<div class="col3 bdr" id="vwTagTags">
+							<h3>Tags</h3>
+							
+							<ul class="tags">
+								<li><i class="fa fa-tag"></i> tagname</li>
+								<li><i class="fa fa-tag"></i> tagname</li>
+								<li><i class="fa fa-tag"></i> tagname</li>
+							</ul>
+							
+							<button class="new"><i class="fa fa-plus"></i></button>
+						</div>
+
+						<div class="col9 bdr" id="vwTagDetail">
+							<div class="combi">
+								<em><i class="fa fa-tag"></i></em>
+								<input type="text" class="name" placeholder="tag (group) name"/>
+							</div>
+							<div class="combi">
+								<em><i class="fa fa-flag-checkered"></i></em>
+								goal / purpose
+							</div>
+							<textarea name="" id="tagTxtGoal" rows="10" class="goal" style="width:100%;"></textarea>
+							<div class="combi">
+								<em><i class="fa fa-calendar"></i></em>
+								<input type="text" class="name" placeholder="limit" />
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col7">
+					<div class="row">
+						<div class="col4">
+							<h2 class="ttl">準備・受領</h2>
+							<ul class="tags todo ">
+								<li class="fusen a1" >tagname</li>
+								<li class="fusen a1" >tagname</li>
+								<li class="fusen a1" >tagname</li>
+								<li class="fusen a1" >tagname</li>
+							</ul>
+							
+						</div>						
+						<div class="col4">
+							<h2 class="ttl">主な作業</h2>
+							<ul class="tags todo">
+								<li class="fusen a3" >tagname</li>
+								<li class="fusen a3" >tagname</li>
+								<li class="fusen a3" >tagname</li>
+								<li class="fusen a3" >tagname</li>
+							</ul>
+						</div>						
+						<div class="col4">
+							<h2 class="ttl">確認・納品</h2>
+							<ul class="tags todo ">
+								<li class="fusen a3" >tagname</li>
+								<li class="fusen a3" >tagname</li>
+								<li class="fusen a3" >tagname</li>
+								<li class="fusen a3" >tagname</li>
+							</ul>
+						</div>						
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- template -->
+		<ul class="template hide">
+			<li class="tag"><dl>
+				<dt class="ttl grid">
+					<span class="col1 r"><i class="fa fa-tag"></i></span>
+					<span class="col10"><input type="text" value="tagname"/></span>
+					<span class="col1"><button class="rmv"><i class="fa fa-remove"></i></button></span>
+					
+					<span class="col4">&nbsp;</span>
+					<span class="col2 c">
+						<em><i class="fa fa-sticky-note a1"></i> <b>0</b></em>
+					</span>
+					<span class="col2 c">
+						<em><i class="fa fa-sticky-note a2"></i> <b>0</b></em>
+					</span>
+					<span class="col2 c">
+						<em><i class="fa fa-sticky-note a3"></i> <b>0</b></em>
+					</span>
+					<span class="col2 c">
+						<em><i class="fa fa-sticky-note a4"></i> <b>0</b></em>
+					</span>
+				</dt>
+				<dd>
+					<ul class="todo"></ul>
+				</dd>
+			</dl></li>
+		</ul>
+		
+		<!-- 付箋のテンプレ　-->
+		<ul class="templateF hide">
+			<li class="fusen" draggable="true">
+				<p class="ttl"></p>
+				<ol class="check"></ol>
+				<dl class="tm grid div3">&nbsp;</dl>
+				<p class="tags"></p>
+			</li>
+		</ul>
+	</section><!-- /#vwTag -->
+	
+	<!-- @todo -->
+	<section id="vwConfig" class="page view hide">
+		<h3>設定</h3>
+		<dl class="row">
+			<dt class="col3">Storage</dt>
+			<dd class="col9">
+				<p class="bargraph graph">
+					<b class="del">delted</b>
+					<b class="fin">finished</b>
+					<b class="run">running</b>
+					<b class="ns">not strat</b>
+				</p>
+			</dd>
+		</dl>
+		<dl class="row">
+			<dt class="col3">
+				<i class="fa fa-trash-o"></i>保存領域の回復</dt>
+			<dd class="col9">
+				<p class="bargraph"><b></b></p>
+				<button type="button">削除(All)消去</button>
+				<button type="button">過去ログの消去 10%</button>
+				<button type="button">過去ログの消去 50%</button>
+			</dd>
+		</dl>
+	</section><!-- /#vwConfig -->
+
+	<!-- @todo -->
+	<section id="vwTrash" class="page view hide">
+		vwTrash
+		<ul class="todo">
+			
+		</ul>
+	</section><!-- /#vwTrash -->
+
+	
+	<section id="vwCalendar" class="page view hide">
+		<div class="inner">
+			<ul id="asign" class="grid">
+
+				<li id="noLimit" class="col6 panel dropable">
+					<h2 class="header"><i class="fa fa-calendar-o"></i> 作業日未定</h2>
+					<div class="search combi">
+						<em><i class="fa fa-search"></i></em>
+						<input type="text" class=""/>
+					</div>
+					<ul id="UNDEF" class="todo grid div3 ">
+						<!-- 期限未定 -->
+					</ul>
+				</li>
+
+				<li id="scheduled" class="col6">
+					<h2 class="header"><i class="fa fa-calendar-check-o"></i> アサイン済み</h2>
+
+					<ol class="folders ">
+						<li id="wkLast" class="week hide fire">
+							<h3 class="thr tab"><b class="fa fa-warning"></b> 期限切れ</h3>
+							<p class="alert past"><i class="fa fa-warning"></i> 完了していないタスクがあります。</p>
+							<ul class="todo grid">
+							</ul>
+						</li>
+
+						<li id="wkThis" class="week dropable">
+							<h3 class="thr tab"><b class="fa fa-calendar-check-o">今週</b><i></i></h3>
+							<p class="alert past hide"><i class="fa fa-warning"></i> 未アサインのタスクがあります</p>
+							<p class="noTask hide"><i class="fa fa-sticky-note-o"></i> 予定がありません</p>
+							<ul class="todo glid"><!-- 週予定　--></ul>
+							<ol class="folders days"><!-- 日別予定 --></ol>
+						</li>
+
+						<li class="week dropable odd">
+							<h3 class="thr tab"><b class="fa fa-calendar-check-o">来週</b><i></i></h3>
+							<p class="noTask"><i class="fa fa-sticky-note-o"></i> 予定がありません</p>
+							<ul class="todo glid"><!-- 週予定　--></ul>
+							<ol class="folders days"><!-- 日別予定 --></ol>
+						</li>
+	
+						<li class="week dropable">
+							<h3 class="thr tab"><b class="fa fa-calendar-check-o"></b><i></i></h3>
+							<p class="noTask"><i class="fa fa-sticky-note-o"></i> 予定がありません</p>
+							<ul class="todo glid"><!-- 週予定　--></ul>
+							<ol class="folders days"><!-- 日別予定 --></ol>
+						</li>
+	
+						<li class="week dropable odd">
+							<h3 class="thr tab"><b class="fa fa-calendar-check-o"></b><i></i></h3>
+							<p class="noTask"><i class="fa fa-sticky-note-o"></i> 予定がありません</p>
+							<ul class="todo glid"><!-- 週予定　--></ul>
+							<ol class="folders days"><!-- 日別予定 --></ol>
+						</li>
+
+						<li class="week dropable">
+							<h3 class="thr tab"><b class="fa fa-calendar-check-o"></b><i></i></h3>
+							<p class="noTask"><i class="fa fa-sticky-note-o"></i> 予定がありません</p>
+							<ul class="todo glid"><!-- 週予定　--></ul>
+							<ol class="folders days"><!-- 日別予定 --></ol>
+						</li>
+					</ol>
+				</li>
+			</ul>
+		</div>
+	</section><!-- /#vwCalendar -->
+
+
+
+	<!-- sidebar -->
+	<section id="vwSideBar" class="view show">
+		<div class="inner">
+
+		<nav id="mnView" class="hide">
+			<ul  class="buttons only">
+				<li data-view="vwGrid" class="selected"><i class="fa fa-2x fa-th-large"></i></li>
+				<li data-view="vwFlat" ><i class="fa fa-2x fa-columns"></i></li>
+				<li data-view="vwCalendar" ><i class="fa fa-2x fa-calendar"></i></li>
+				<li data-view="vwTimeLine" ><i class="fa fa-2x fa-paw"></i></li>
+				<li data-view="vwTag" ><i class="fa fa-2x fa-tags"></i></li>
+				<li data-view="vwTrash" ><i class="fa fa-2x fa-trash-o"></i></li>
+				<li data-view="vwConfig" ><i class="fa fa-2x fa-gear"></i></li>
+			</ul>
+		</nav>
+
+		<nav id="mnOdr" class="filter hide">
+			<ul class="buttons hide">
+				<li data-odr="updt" class="selected">更新順</li>
+				<li data-odr="fin" >完了順</li>
+				<li data-odr="status" >進捗順</li>
+			</ul>
+		</nav>
+		<nav id="mnCond" class="filter hide">
+			<ul class="buttons">
+				<li data-stat="0" class="selected"><i class="fa fa-edit"></i> 未着手</li>
+				<li data-stat="1" class="selected"> 進行中</li>
+				<li data-stat="F"><i class="fa fa-flag-checkered"></i> 済</li>
+			</ul>
+		</nav>
+		<nav id="mnTdy" class="filter hide">
+			<ul class="buttons only">
+				<li data-tdy="c"><i class="fa fa-pencil"></i> 本日</li>
+				<li data-tdy="u"><i class="fa fa-check-square-o"></i> 本日</li>
+				<li data-tdy="d"><i class="fa fa-calendar-o"></i> 本日</li>
+				
+			</ul>
+		</nav>
+
+		<nav id="mnPaw" class="filter hide">
+			<ul class="buttons">
+				<li data-paw="f" class="selected"><i class="fa fa-check"></i> 完了</li>
+				<li data-paw="c" class="selected"><i class="fa fa-save"></i> 作成</li>
+			</ul>
+		</nav>
+
+		<nav id="mnEdit" class="filter hide">
+			<ul class="buttons only">
+				<li class="save"><i class="fa fa-floppy-o"></i> 保存</li>
+			</ul>
+		</nav>
+		<!-- @bottom -->
+		<nav id="mnTags" class="filter hide">
+			<ul class="tags buttons">
+				<li class="new" data-view="vwTag" data-tag="all"><b>＋</b></li>
+			</ul>
+		</nav>		
+
+		</div>
+	</section><!-- /#vwSideBar -->
+
+</body>
+<script src="/js/ga.js"></script>
+</html>
